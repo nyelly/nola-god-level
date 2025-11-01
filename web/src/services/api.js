@@ -15,7 +15,7 @@ export const analyticsAPI = {
   getDailyKPIs: () => api.get('/kpis/daily'),
   getKPISummary: () => api.get('/kpis/summary'),
   
-  // Vendas
+  // Vendas 
   getTopProducts: () => api.get('/sales/top-products'),
   getChannelPerformance: () => api.get('/sales/channels'),
   

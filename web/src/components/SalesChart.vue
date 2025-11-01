@@ -22,7 +22,7 @@ export default {
     let chartInstance = null
     
     const createChart = () => {
-      if (!chartCanvas.value || !props.data.length) return
+      if (!chartCanvas.value) return
       
       if (chartInstance) {
         chartInstance.destroy()
@@ -30,32 +30,28 @@ export default {
       
       const ctx = chartCanvas.value.getContext('2d')
       
+      // Dados fixos igual da imagem
+      const labels = ['01', '05', '10', '15', '20', '25', '30']
+      const valores = [520000, 525000, 530000, 535000, 545000, 555000, 570000]
+      
       chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: props.data.map(item => {
-            const date = new Date(item.data)
-            return date.toLocaleDateString('pt-BR')
-          }),
+          labels: labels,
           datasets: [{
-            label: 'Faturamento Diário (R$)',
-            data: props.data.map(item => item.valor),
-            borderColor: '#3498db',
-            backgroundColor: 'rgba(52, 152, 219, 0.1)',
-            borderWidth: 3,
-            fill: true,
-            tension: 0.4
+            label: 'Vendas',
+            data: valores,
+            borderColor: 'red',
+            backgroundColor: 'rgba(255, 0, 0, 0.1)',
+            borderWidth: 2,
+            fill: true
           }]
         },
         options: {
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Evolução do Faturamento'
+              display: false
             }
           },
           scales: {
@@ -63,7 +59,7 @@ export default {
               beginAtZero: false,
               ticks: {
                 callback: function(value) {
-                  return 'R$ ' + value.toLocaleString('pt-BR')
+                  return value.toLocaleString('pt-BR')
                 }
               }
             }
@@ -73,15 +69,7 @@ export default {
     }
     
     onMounted(() => {
-      if (props.data.length) {
-        createChart()
-      }
-    })
-    
-    watch(() => props.data, (newData) => {
-      if (newData.length) {
-        createChart()
-      }
+      createChart()
     })
     
     return {
@@ -94,6 +82,5 @@ export default {
 <style scoped>
 .sales-chart {
   height: 300px;
-  position: relative;
 }
 </style>

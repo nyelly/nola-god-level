@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard">
-    <!-- KPIs em Tempo Real -->
     <KPICards 
       :loading="loadingKPIs" 
       :kpis="kpisData" 
@@ -21,7 +20,7 @@
       
       <!-- Performance por Canal -->
       <div class="card">
-        <h3>🛍️ Performance por Canal</h3>
+        <h3>Performance por Canal</h3>
         <ChannelPerformance 
           v-if="channelsData.length > 0"
           :data="channelsData"
@@ -31,14 +30,13 @@
       </div>
     </div>
     
-    <!-- Segunda Linha -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
       <!-- Top Produtos -->
       <div class="card">
-        <h3>🏆 Top Produtos</h3>
+        <h3> Top Produtos</h3>
         <TopProducts 
           v-if="productsData.length > 0"
-          :data="productsData"
+          :products="productsData"
           :loading="loadingProducts"
         />
         <div v-else class="loading">Carregando produtos...</div>
@@ -94,7 +92,6 @@ export default {
     // Função para carregar todos os dados
     const loadDashboardData = async () => {
       try {
-        // Carregar em paralelo para melhor performance
         const [
           kpisResponse,
           trendsResponse, 
@@ -119,7 +116,6 @@ export default {
       } catch (error) {
         console.error('Erro ao carregar dados:', error)
       } finally {
-        // Remover loading
         loadingKPIs.value = false
         loadingTrends.value = false
         loadingChannels.value = false

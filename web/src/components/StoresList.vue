@@ -48,7 +48,7 @@ export default {
 }
 
 .stores-container {
-  space-y: 8px;
+   margin-bottom: 8px;
 }
 
 .store-item {
@@ -123,7 +123,6 @@ export default {
   border: 1px solid #d6d8db;
 }
 
-/* Scrollbar */
 .stores-container::-webkit-scrollbar {
   width: 6px;
 }

@@ -8,12 +8,58 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f6fa;
   color: #2c3e50;
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+   background: #e3f2fd;  
+  color: #2c3e50;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+   color: #0056b3; 
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: #2c3e50;    
+}
+
+.sidebar li:hover {
+  background: #bbdefb; 
+}
+
+.sidebar li.active {
+  background: #0056b3;
+  font-weight: bold;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  flex: 1;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 .dashboard-header {
@@ -53,7 +99,7 @@ body {
 .card h3 {
   color: #2c3e50;
   margin-bottom: 15px;
-  border-bottom: 2px solid #3498db;
+  border-bottom: 2px solid #0056b3;
   padding-bottom: 5px;
 }
 
@@ -69,10 +115,6 @@ body {
   padding: 10px;
   border-radius: 5px;
   margin: 10px 0;
-}
-
-.grid {
-  display: grid;
 }
 
 .grid-cols-1 {
@@ -117,18 +159,41 @@ body {
 }
 
 @media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+  }
+  
   .grid-cols-2,
   .grid-cols-4 {
     grid-template-columns: 1fr;
   }
 }
 
-/* Espaçamento entre elementos filhos */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 60px;
+    padding: 10px;
+  }
+  
+  .sidebar h2,
+  .sidebar li span {
+    display: none;
+  }
+  
+  .main-content {
+    margin-left: 60px;
+    padding: 10px;
+  }
+}
+
 .space-y > * + * {
   margin-top: 0.5rem;
 }
 
-/* Filtros de período */
 .filters {
   display: flex;
   gap: 12px;
@@ -144,13 +209,12 @@ body {
   padding: 8px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #0056b3;
+  color: #2e6ea7;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
 }
 
 .filter-btn:hover {
-  background: #0056b3;
+  background: #2e6ea7;
   color: white;
   transform: translateY(-2px);
 }
@@ -161,7 +225,6 @@ body {
   box-shadow: 0 2px 8px rgba(0, 86, 179, 0.3);
 }
 
-/* Badges de status */
 .badge {
   display: inline-block;
   padding: 4px 12px;
@@ -189,11 +252,10 @@ body {
   border: 1px solid #f5c6cb;
 }
 
-/* Tooltips */
 .tooltip {
   position: relative;
   cursor: help;
-  border-bottom: 1px dotted #0056b3;
+  border-bottom: 1px dotted #2e6ea7;
 }
 
 .tooltip:hover::before {
@@ -211,7 +273,6 @@ body {
   z-index: 1000;
 }
 
-/* Estados de loading sutil */
 .loading-pulse {
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -222,7 +283,6 @@ body {
   100% { opacity: 1; }
 }
 
-/* Melhorias nos cards existentes */
 .card:hover .card-icon {
   transform: scale(1.1);
 }
@@ -233,7 +293,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Grid de métricas adicionais */
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -268,7 +327,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Melhoria na lista de lojas */
 .lojas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -289,7 +347,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 86, 179, 0.1);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .filters {
     justify-content: center;
