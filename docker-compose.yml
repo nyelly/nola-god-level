@@ -12,12 +12,41 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U challenge -d challenge_db"]
       interval: 5s
       timeout: 5s
       retries: 5
+
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: nola-backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://challenge:challenge_2024@postgres:5432/challenge_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./api:/app
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: nola-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    command: npm run dev
 
   data-generator:
     build:
@@ -44,7 +73,7 @@ services:
     container_name: godlevel-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@godlevel.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_PASSWORD: 123456
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
       - "5050:80"
@@ -56,4 +85,3 @@ services:
 volumes:
   postgres_data:
     driver: local
-

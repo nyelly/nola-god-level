@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { formatNumber, formatCurrency } from '../utils/formatters'
 
 export default {
   name: 'KPICards',
@@ -43,19 +43,6 @@ export default {
     }
   },
   setup() {
-    const formatNumber = (value) => {
-      if (!value) return '0'
-      return new Intl.NumberFormat('pt-BR').format(value)
-    }
-    
-    const formatCurrency = (value) => {
-      if (!value) return 'R$ 0,00'
-      return new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(value)
-    }
-    
     return {
       formatNumber,
       formatCurrency
@@ -63,6 +50,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .kpi-cards {

@@ -1,0 +1,28 @@
+cat > web/.gitignore << 'EOF'
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+dist/
+build/
+
+.env
+.env.local
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+.DS_Store
+Thumbs.db
+
+*.log
+EOF
+
+git rm -r --cached web/node_modules
+git add web/.gitignore
+git commit -m "fix: add gitignore and remove node_modules"
+
+ls -la
