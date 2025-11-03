@@ -238,7 +238,6 @@ export default {
       }
     }
 
-    // Carregar performance de entrega
     const loadDeliveryPerformance = async () => {
       try {
         const response = await analyticsApi.getDeliveryPerformance()
@@ -249,7 +248,6 @@ export default {
       }
     }
 
-    // Watch para recarregar dados quando voltar para overview
     watch(activeTab, (newTab) => {
       if (newTab === 'overview' && !trendsData.value.length) {
         loadDashboardData()
@@ -458,7 +456,6 @@ export default {
   color: #2c3e50;
 }
 
-/* Caixas brancas de informação */
 .white-info-box {
   background: white;
   border-radius: 15px;

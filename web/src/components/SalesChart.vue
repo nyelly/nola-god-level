@@ -30,7 +30,6 @@ export default {
       
       const ctx = chartCanvas.value.getContext('2d')
       
-      // Dados fixos igual da imagem
       const labels = ['01', '05', '10', '15', '20', '25', '30']
       const valores = [520000, 525000, 530000, 535000, 545000, 555000, 570000]
       

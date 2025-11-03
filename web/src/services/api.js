@@ -10,7 +10,6 @@ const api = axios.create({
   }
 })
 
-// API original (dashboard básico)
 export const dashboardApi = {
   getDailyKPIs: () => api.get('/kpis/daily'),
   getKPISummary: () => api.get('/kpis/summary'),
@@ -23,7 +22,6 @@ export const dashboardApi = {
   getTopItems: () => api.get('/products/top-items')
 }
 
-// API do analytics explorer (nova)
 export { analyticsApi } from './analyticsApi.js'
 
 export default api

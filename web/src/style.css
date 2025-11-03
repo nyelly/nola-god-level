@@ -1,63 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f6fa;
-  color: #ffffff;
-  display: flex;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 259px;
-  background: #e3f2fd;  
-  color: #2c3e50;
-  height: 100vh;
-  padding: 25px;
-  position: fixed;
-  padding: 12px;
-}
-
-.sidebar h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 24px;
-   color: #0056b3; 
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar li {
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  color: #2c3e50;    
-}
-
-.sidebar li:hover {
-  background: #bbdefb; 
-}
-
-.sidebar li.active {
-  background: #0056b3;
-  font-weight: bold;
-}
-
-/* CONTEÚDO PRINCIPAL */
-.main-content {
-  margin-left: 250px;
-  padding: 20px;
-  flex: 1;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -160,9 +100,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    width: 200px;
-  }
   
   .main-content {
     margin-left: 200px;
@@ -175,16 +112,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .sidebar {
-    width: 60px;
-    padding: 10px;
-  }
-  
-  .sidebar h2,
-  .sidebar li span {
-    display: none;
-  }
-  
+
   .main-content {
     margin-left: 60px;
     padding: 10px;
@@ -360,11 +288,6 @@ body {
   .lojas-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.sidebar {
-  border-top: 4px solid #2c3e50;
-  border-right: 2px solid #2c3e50;
 }
 
 .main-content {
