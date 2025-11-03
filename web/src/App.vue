@@ -1,13 +1,6 @@
 <template>
   <div id="app">
-    <div class="dashboard-header">
-      <h1 class="dashboard-title">🍔 Nola Analytics</h1>
-      <p class="dashboard-subtitle">Dashboard de Analytics para Restaurantes</p>
-    </div>
-    
-    <div class="container">
-      <Dashboard />
-    </div>
+    <Dashboard />
   </div>
 </template>
 
@@ -21,3 +14,24 @@ export default {
   }
 }
 </script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #2c3e50;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#app {
+  min-height: 100vh;
+}
+</style>
